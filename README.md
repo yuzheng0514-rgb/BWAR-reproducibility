@@ -1,7 +1,7 @@
 # BWAR
 
 Code and compact result artifacts for **Bures--Wasserstein Autoregression for
-Gaussian Distributional Time Series** by Yuzheng Dong, Junlie Huang, and Cheng
+Gaussian Distributional Time Series** by Yuzheng Dong, Junlie Huang, Chengshuo Du, and Cheng
 Meng.
 
 BWAR encodes Gaussian states with affine maps induced by Bures--Wasserstein
