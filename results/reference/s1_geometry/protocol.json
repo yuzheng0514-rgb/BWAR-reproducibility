@@ -1,0 +1,22 @@
+{
+  "experiment": "S1 geometry robustness",
+  "replications": 80,
+  "baseline": {
+    "sample_size": 320,
+    "dimension": 8,
+    "phi": 0.70,
+    "dispersion": 0.15,
+    "fit_end": 144,
+    "validation_end": 208
+  },
+  "variations": [
+    {"name": "Shorter series", "sample_size": 200, "dimension": 8, "phi": 0.70, "dispersion": 0.15},
+    {"name": "Higher dimension", "sample_size": 320, "dimension": 10, "phi": 0.70, "dispersion": 0.12},
+    {"name": "Weaker dynamics", "sample_size": 320, "dimension": 8, "phi": 0.50, "dispersion": 0.15},
+    {"name": "Larger variation", "sample_size": 320, "dimension": 8, "phi": 0.70, "dispersion": 0.18}
+  ],
+  "generating_charts": ["Bures", "Log-Euclidean", "Cholesky"],
+  "horizons": [1],
+  "coordinate_model": "unrestricted centered ridge lag-design VAR(1)",
+  "ridge_grid": [0.000001, 0.0001, 0.001, 0.01, 0.1, 1.0, 10.0]
+}

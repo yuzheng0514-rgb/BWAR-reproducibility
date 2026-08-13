@@ -1,0 +1,23 @@
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{3.2pt}
+\renewcommand{\arraystretch}{1.10}
+\caption{Fixed-reference geometry study. Entries are the mean (Monte Carlo standard error) of replication-specific ratios between a method's mean test $W_2^2$ loss and the persistence loss over 80 replications. Persistence is normalized to one and omitted. The first three rows share $T=320$, $d=8$, $\phi=0.70$, and covariance-coordinate dispersion $0.15$ and differ only in the generating covariance chart. The remaining Bures rows perturb the baseline, with the higher-dimensional case jointly changing dimension and dispersion. All methods use one-step forecasts, the same 45\%--20\%--35\% chronological split, ridge grid, and unrestricted VAR(1) fit; lower values are better.}
+\label{tab:geometry-robustness}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrrrrrr}
+\toprule
+Generating chart & Setting & $T$ & $d$ & $\phi$ & Disp. & Euclidean AR & Cholesky AR & Log-Euclidean AR & BWAR \\
+\midrule
+Bures & Baseline & 320 & 8 & 0.70 & 0.15 & 0.997 (0.004) & 1.043 (0.005) & 1.000 (0.004) & \textbf{0.960 (0.004)} \\
+Log-Euclidean & Baseline & 320 & 8 & 0.70 & 0.15 & 0.979 (0.005) & 0.972 (0.004) & \textbf{0.959 (0.004)} & 0.975 (0.004) \\
+Cholesky & Baseline & 320 & 8 & 0.70 & 0.15 & 0.991 (0.005) & \textbf{0.959 (0.004)} & 0.968 (0.004) & 0.976 (0.004) \\
+Bures & Shorter series & 200 & 8 & 0.70 & 0.15 & 1.094 (0.009) & 1.129 (0.009) & 1.096 (0.009) & \textbf{1.066 (0.009)} \\
+Bures & Higher dimension & 320 & 10 & 0.70 & 0.12 & 1.061 (0.005) & 1.105 (0.005) & 1.068 (0.005) & \textbf{1.033 (0.005)} \\
+Bures & Weaker dynamics & 320 & 8 & 0.50 & 0.15 & 0.852 (0.003) & 0.874 (0.004) & 0.857 (0.004) & \textbf{0.832 (0.003)} \\
+Bures & Larger variation & 320 & 8 & 0.70 & 0.18 & 1.016 (0.004) & 1.069 (0.005) & 1.021 (0.004) & \textbf{0.962 (0.004)} \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

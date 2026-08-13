@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bwar-replication"
+version = "1.0.0"
+description = "Replication code for Bures--Wasserstein autoregression"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+  {name = "Yuzheng Dong"},
+  {name = "Junlie Huang"},
+  {name = "Cheng Meng", email = "chengmeng@ruc.edu.cn"},
+]
+dependencies = [
+  "numpy==2.4.3",
+  "pandas==3.0.2",
+  "scipy==1.17.1",
+  "matplotlib==3.10.8",
+  "h5py==3.16.0",
+  "pillow==12.1.1",
+  "pyarrow==23.0.1",
+]
+
+[project.urls]
+Repository = "https://github.com/yuzheng0514-rgb/BWAR-reproducibility"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+include-package-data = false

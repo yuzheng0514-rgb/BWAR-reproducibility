@@ -1,0 +1,28 @@
+{
+  "dataset": "Divvy public trip records",
+  "months": [
+    "202401", "202402", "202403", "202404", "202405", "202406",
+    "202407", "202408", "202409", "202410", "202411", "202412"
+  ],
+  "stations": 30,
+  "window_hours": 72,
+  "step_hours": 24,
+  "horizons": [3, 4, 5],
+  "rolling_origins": 5,
+  "common_targets_per_horizon": 183,
+  "methods": [
+    "persistence", "raw_var_window_ar", "euclidean_gaussian_ar",
+    "cholesky_gaussian_ar", "log_euclidean_gaussian_ar", "fixed_bwar",
+    "local_bwar"
+  ],
+  "coordinate_model": "unrestricted centered ridge lag-design VAR(1)",
+  "selection_endpoint": "training-standardized station-mean RMSE",
+  "local_reference_windows": [24, 48, 72],
+  "bootstrap": {
+    "kind": "origin-preserving moving-block bootstrap",
+    "replicates": 10000,
+    "block_length": 3,
+    "sensitivity_block_length": 6,
+    "seed": 20260714
+  }
+}

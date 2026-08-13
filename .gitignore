@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.coverage
+.pytest_cache/
+.DS_Store
+.venv/
+venv/
+
+# Third-party source data and generated caches
+data/divvy/
+
+# Recomputed outputs (archived reference outputs remain tracked)
+results/generated/
+artifacts/generated/
+
+# Local planning and editor state
+task_plan.md
+findings.md
+progress.md
+.idea/
+.vscode/

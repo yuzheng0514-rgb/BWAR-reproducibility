@@ -1,0 +1,17 @@
+{
+  "experiment": "Continuous covariance evolution",
+  "config": "configs/continuous_covariance_regimes.json",
+  "config_sha256": "213f5a998861f50971c7c432c2436a6b6b74ce1dd048e037150b8280a8354339",
+  "replications": 60,
+  "methods": [
+    "persistence",
+    "euclidean",
+    "cholesky",
+    "log_euclidean",
+    "fixed",
+    "local"
+  ],
+  "ridge_selection": "method-specific validation loss",
+  "paired_replications": true,
+  "primary_loss": "mean Gaussian W2-squared test loss"
+}

@@ -1,0 +1,20 @@
+{
+  "dataset": "Divvy public trip records",
+  "source_page": "https://divvybikes.com/system-data",
+  "license": "https://divvybikes.com/data-license-agreement",
+  "url_template": "https://divvy-tripdata.s3.amazonaws.com/{month}-divvy-tripdata.zip",
+  "sources": [
+    {"month": "202401", "path": "data/divvy/202401.zip", "bytes": 5450495, "sha256": "1a4efaba66d1a7a6450cbb699a53de9ef7b0bb0879949117f294cd91839fc427"},
+    {"month": "202402", "path": "data/divvy/202402.zip", "bytes": 8455339, "sha256": "2d983bec2e3e0d9b5218c0a8ac63d827018ef0006cf1f21b7f1d58b68052ae9a"},
+    {"month": "202403", "path": "data/divvy/202403.zip", "bytes": 10964676, "sha256": "f8e0b7eb42aabff4c18fee98371712e79820b56718d8c0247047385fd05d28a2"},
+    {"month": "202404", "path": "data/divvy/202404.zip", "bytes": 15413128, "sha256": "a0609d3835e8fa58def3330ac61a8e61f27cfabf852d30afc2ab756712e2fe8b"},
+    {"month": "202405", "path": "data/divvy/202405.zip", "bytes": 22817320, "sha256": "3231936efd3d7438522bf9332caabc111f216f3c933f5967d1d94b74c8ffe69b"},
+    {"month": "202406", "path": "data/divvy/202406.zip", "bytes": 28816235, "sha256": "283697cdea56224c2119a93683e7e95a03c5f9fa1bd749c39b97373b85672f78"},
+    {"month": "202407", "path": "data/divvy/202407.zip", "bytes": 29232600, "sha256": "a0c9c2453c9e1e071314780193b68bc502c53389136bd8e2f35b4254babe46ac"},
+    {"month": "202408", "path": "data/divvy/202408.zip", "bytes": 30062136, "sha256": "91a8a24aaa3234a3b0b6363dd6158535a3dd65ae8c3e43443f830a5b8da7baae"},
+    {"month": "202409", "path": "data/divvy/202409.zip", "bytes": 31775154, "sha256": "39a7c546d7c2534b69ec8ccd6113a372a3c7999e41f7222848d99dd4c0eb3183"},
+    {"month": "202410", "path": "data/divvy/202410.zip", "bytes": 22713795, "sha256": "f58aa4dead420d60d7eabae0b31d135990024de107eb003b9670b04120d67767"},
+    {"month": "202411", "path": "data/divvy/202411.zip", "bytes": 13826814, "sha256": "40e38c439d15129d4d285be79d596f3b32251a276fc2a96d1b75161b999325c2"},
+    {"month": "202412", "path": "data/divvy/202412.zip", "bytes": 6947835, "sha256": "62264ba830bf8e9fc1eaf05325afc4fff2cb2da67fbc352c0ca34b5408371f0e"}
+  ]
+}

@@ -1,0 +1,23 @@
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.2pt}
+\renewcommand{\arraystretch}{1.20}
+\caption{PEMS-BAY rolling-origin results averaged over four prespecified geographic panels. Entries are target-weighted means $\pm$ moving-block bootstrap standard errors; lower values are better. Boldface identifies the smallest point estimate in each column. The covariance component identifies the source of the total distributional error.}
+\label{tab:pems-full-results}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+& \multicolumn{3}{c}{Gaussian $W_2^2$ loss} & \multicolumn{3}{c}{Covariance Bures component} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Method & $h=1$ & $h=3$ & $h=6$ & $h=1$ & $h=3$ & $h=6$ \\
+\midrule
+Persistence & 25.881 $\pm$ 2.394 & 29.165 $\pm$ 1.731 & 23.672 $\pm$ 1.243 & 13.913 $\pm$ 1.292 & 15.553 $\pm$ 0.883 & 13.237 $\pm$ 0.739 \\
+Euclidean AR & 12.448 $\pm$ 0.574 & 13.355 $\pm$ 0.401 & 13.748 $\pm$ 0.431 & 7.207 $\pm$ 0.434 & 7.439 $\pm$ 0.185 & 7.583 $\pm$ 0.149 \\
+Cholesky AR & 11.381 $\pm$ 0.431 & 12.963 $\pm$ 0.712 & 13.596 $\pm$ 0.800 & 6.209 $\pm$ 0.289 & 7.048 $\pm$ 0.522 & 7.432 $\pm$ 0.560 \\
+Log-Euclidean AR & 11.940 $\pm$ 0.635 & 13.945 $\pm$ 0.995 & 14.649 $\pm$ 1.017 & 6.768 $\pm$ 0.563 & 8.029 $\pm$ 0.823 & 8.484 $\pm$ 0.834 \\
+Fixed BWAR & \textbf{10.597 $\pm$ 0.408} & \textbf{12.513 $\pm$ 0.551} & \textbf{13.137 $\pm$ 0.645} & \textbf{5.425 $\pm$ 0.211} & \textbf{6.597 $\pm$ 0.324} & \textbf{6.973 $\pm$ 0.387} \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
