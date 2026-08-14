@@ -17,7 +17,7 @@ smoke:
 		--reps 1 --workers 1 --output results/generated/smoke/s2_continuous_covariance
 
 s1:
-	PYTHONPATH=src $(PYTHON) scripts/run_simulations.py --reps 80 --ar-model full
+	PYTHONPATH=src $(PYTHON) scripts/run_simulations.py --reps 80 --ar-model diag
 
 s2:
 	PYTHONPATH=src $(PYTHON) scripts/run_continuous_covariance_regimes.py \

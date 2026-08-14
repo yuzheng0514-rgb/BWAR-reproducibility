@@ -29,7 +29,7 @@ make s1
 
 The study uses 80 replications per setting, one-step forecasts, a
 45%--20%--35% chronological split, the ridge grid
-`1e-6, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10`, and an unrestricted centered ridge
+`1e-6, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10`, and a diagonal centered ridge
 lag-design VAR(1). The baseline mechanisms use `T=320`, `d=8`, and
 `phi=0.70`; the table also reports the prespecified Bures finite-sample
 variations.

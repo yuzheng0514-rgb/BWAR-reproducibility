@@ -44,7 +44,7 @@ against the frozen files in `artifacts/reference/` by the test suite.
 ## Rerun the simulations
 
 ```bash
-make s1  # 80 replications, unrestricted ridge VAR(1)
+make s1  # 80 replications, diagonal ridge VAR(1)
 make s2  # 60 paired replications, two continuous covariance regimes
 ```
 

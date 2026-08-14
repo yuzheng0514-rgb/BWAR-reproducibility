@@ -17,7 +17,7 @@ def main() -> None:
         )
     )
     parser.add_argument("--reps", type=int, default=80)
-    parser.add_argument("--ar-model", choices=("diag", "full"), default="full")
+    parser.add_argument("--ar-model", choices=("diag", "full"), default="diag")
     parser.add_argument(
         "--output-root",
         type=Path,

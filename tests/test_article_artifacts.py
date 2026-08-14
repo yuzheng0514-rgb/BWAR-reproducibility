@@ -66,6 +66,27 @@ class ArticleArtifactTests(unittest.TestCase):
             / "strong_synthetic_transport_summary.csv"
         )
         self.assertEqual(set(s1["n_rep"]), {80})
+        s1_raw = pd.read_csv(
+            ROOT
+            / "results"
+            / "reference"
+            / "s1_geometry"
+            / "strong_synthetic_transport_raw.csv"
+        )
+        self.assertEqual(set(s1_raw["ar_model"]), {"diag"})
+        s1_protocol = json.loads(
+            (
+                ROOT
+                / "results"
+                / "reference"
+                / "s1_geometry"
+                / "protocol.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            s1_protocol["coordinate_model"],
+            "diagonal centered ridge lag-design VAR(1)",
+        )
 
         s2 = pd.read_csv(
             ROOT

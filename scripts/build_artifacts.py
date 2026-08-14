@@ -70,7 +70,7 @@ def build_s1_table(results: Path, output: Path) -> None:
         r"\small",
         r"\setlength{\tabcolsep}{3.2pt}",
         r"\renewcommand{\arraystretch}{1.10}",
-        r"\caption{Fixed-reference geometry study. Entries are the mean (Monte Carlo standard error) of replication-specific ratios between a method's mean test $W_2^2$ loss and the persistence loss over 80 replications. Persistence is normalized to one and omitted. The first three rows share $T=320$, $d=8$, $\phi=0.70$, and covariance-coordinate dispersion $0.15$ and differ only in the generating covariance chart. The remaining Bures rows perturb the baseline, with the higher-dimensional case jointly changing dimension and dispersion. All methods use one-step forecasts, the same 45\%--20\%--35\% chronological split, ridge grid, and unrestricted VAR(1) fit; lower values are better.}",
+        r"\caption{Fixed-reference geometry study. Entries are the mean (Monte Carlo standard error) of replication-specific ratios between a method's mean test $W_2^2$ loss and the persistence loss over 80 replications. Persistence is normalized to one and omitted. The first three rows share $T=320$, $d=8$, $\phi=0.70$, and covariance-coordinate dispersion $0.15$ and differ only in the generating covariance chart. The remaining Bures rows perturb the baseline, with the higher-dimensional case jointly changing dimension and dispersion. All methods use one-step forecasts, the same 45\%--20\%--35\% chronological split, ridge grid, and diagonal ridge VAR(1) fit; lower values are better.}",
         r"\label{tab:geometry-robustness}",
         r"\resizebox{\linewidth}{!}{%",
         r"\begin{tabular}{llrrrrrrrr}",
