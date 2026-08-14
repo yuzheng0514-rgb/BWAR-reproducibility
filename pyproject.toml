@@ -12,6 +12,7 @@ license = "MIT"
 authors = [
   {name = "Yuzheng Dong"},
   {name = "Junlie Huang"},
+  {name = "Chengshuo Du"},
   {name = "Cheng Meng", email = "chengmeng@ruc.edu.cn"},
 ]
 dependencies = [
