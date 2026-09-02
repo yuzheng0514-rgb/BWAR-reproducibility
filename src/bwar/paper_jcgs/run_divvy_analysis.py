@@ -19,6 +19,7 @@ if str(ROOT) not in sys.path:
 from bwar.paper_jcgs.divvy_data import (  # noqa: E402
     _standardized_stream_with_profile,
     divvy_matrix,
+    load_processed_divvy_matrix,
 )
 from bwar.paper_jcgs.divvy_target_level import (  # noqa: E402
     evaluate_target_panel,
@@ -466,7 +467,12 @@ def write_manifest(
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
-def run(out_dir: Path, *, h2_monthly: bool = False) -> None:
+def run(
+    out_dir: Path,
+    *,
+    h2_monthly: bool = False,
+    processed_data_dir: Path | None = None,
+) -> None:
     if out_dir.exists() and any(out_dir.iterdir()):
         raise FileExistsError(f"refusing to overwrite nonempty output directory: {out_dir}")
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -477,19 +483,29 @@ def run(out_dir: Path, *, h2_monthly: bool = False) -> None:
 
     fit_raw_end = None
     if h2_monthly:
+        if processed_data_dir is not None:
+            raise ValueError(
+                "the processed Supporting Data implement the reported fractional protocol, "
+                "not the separate monthly H2 confirmation"
+            )
         if MONTHS != tuple(f"2024{month:02d}" for month in range(1, 13)):
             raise ValueError("monthly H2 confirmation requires January--December 2024")
         fit_raw_end = int((pd.Timestamp("2024-05-01") - pd.Timestamp("2024-01-01")) / pd.Timedelta(hours=1))
 
-    matrix, station_ids = divvy_matrix(
-        DIMENSION,
-        months=MONTHS,
-        window=WINDOW,
-        step=STEP,
-        max_matrices=MAX_MATRICES,
-        fit_raw_end=fit_raw_end,
-        return_columns=True,
-    )
+    if processed_data_dir is None:
+        matrix, station_ids = divvy_matrix(
+            DIMENSION,
+            months=MONTHS,
+            window=WINDOW,
+            step=STEP,
+            max_matrices=MAX_MATRICES,
+            fit_raw_end=fit_raw_end,
+            return_columns=True,
+        )
+    else:
+        matrix, station_ids, fit_raw_end = load_processed_divvy_matrix(
+            processed_data_dir
+        )
     means, covs, raw_windows, starts, profile = _standardized_stream_with_profile(
         matrix,
         window=WINDOW,
@@ -625,8 +641,13 @@ def main() -> None:
     )
     parser.add_argument("--out-dir", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--h2-monthly", action="store_true")
+    parser.add_argument("--processed-data-dir", type=Path)
     args = parser.parse_args()
-    run(args.out_dir, h2_monthly=args.h2_monthly)
+    run(
+        args.out_dir,
+        h2_monthly=args.h2_monthly,
+        processed_data_dir=args.processed_data_dir,
+    )
 
 
 if __name__ == "__main__":

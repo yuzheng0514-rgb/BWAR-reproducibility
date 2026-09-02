@@ -67,6 +67,10 @@ The download script retrieves the official 2024 Divvy trip archives and
 verifies their checksums. Raw trip data are not redistributed. The analysis
 uses horizons 3, 4, and 5, five chronological origins, 183 common targets per
 horizon, and an origin-preserving moving-block bootstrap with 10,000 resamples.
+For journal submission, `scripts/prepare_divvy_supporting_data.py` builds a
+licence-aware processed-data archive containing the selected hourly counts,
+Gaussian states, station-selection audit, chronological splits, metadata, and
+checksums; see `data/README.md` for the command and file-level description.
 
 ## PEMS-BAY application
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import zipfile
 from urllib.request import Request, urlopen
@@ -15,6 +16,40 @@ from bwar.paper_jcgs.rolling_origin import make_rolling_origin_splits
 
 ROOT = Path(__file__).resolve().parents[3]
 DIVVY_URL = "https://divvy-tripdata.s3.amazonaws.com/{month}-divvy-tripdata.zip"
+
+
+def load_processed_divvy_matrix(
+    directory: Path,
+) -> tuple[np.ndarray, tuple[str, ...], int]:
+    """Load and validate the article's processed Divvy Supporting Data."""
+    directory = Path(directory)
+    profile = pd.read_csv(
+        directory / "selected_station_profile.csv", dtype={"station_id": "string"}
+    )
+    hourly = pd.read_csv(directory / "divvy_2024_selected_hourly_counts.csv")
+    manifest = json.loads(
+        (directory / "processed_data_manifest.json").read_text(encoding="utf-8")
+    )
+    station_ids = tuple(profile["station_id"].astype(str))
+    if len(station_ids) == 0 or len(set(station_ids)) != len(station_ids):
+        raise ValueError("processed Divvy station profile is empty or has duplicates")
+    if tuple(hourly.columns[1:]) != station_ids or hourly.columns[0] != "timestamp":
+        raise ValueError("processed Divvy count columns do not match the station profile")
+    timestamps = pd.DatetimeIndex(pd.to_datetime(hourly["timestamp"], errors="raise"))
+    expected = pd.date_range(
+        "2024-01-01 00:00:00", "2024-12-31 23:00:00", freq="h"
+    )
+    if not timestamps.equals(expected):
+        raise ValueError("processed Divvy counts do not cover every hour of 2024")
+    matrix = hourly.loc[:, station_ids].to_numpy(float)
+    if not np.isfinite(matrix).all() or np.any(matrix < 0.0):
+        raise ValueError("processed Divvy counts contain invalid values")
+    if not np.allclose(matrix, np.rint(matrix), rtol=0.0, atol=1e-12):
+        raise ValueError("processed Divvy counts are not integer valued")
+    fit_raw_end = int(manifest["processing"]["standardization_block_hours"])
+    if not 0 < fit_raw_end <= len(matrix):
+        raise ValueError("processed Divvy standardization block is invalid")
+    return matrix, station_ids, fit_raw_end
 
 
 def divvy_zip_path(month: str) -> Path:

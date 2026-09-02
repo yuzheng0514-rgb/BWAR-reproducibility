@@ -21,8 +21,13 @@ def main() -> None:
         type=Path,
         default=divvy.ROOT / "results" / "generated" / "divvy",
     )
+    parser.add_argument(
+        "--processed-data-dir",
+        type=Path,
+        help="Use the submitted Divvy processed-data directory instead of raw archives.",
+    )
     args = parser.parse_args()
-    divvy.run(args.output_dir)
+    divvy.run(args.output_dir, processed_data_dir=args.processed_data_dir)
 
 
 if __name__ == "__main__":
