@@ -29,7 +29,7 @@ DIVVY_LABELS = {
     "raw_var_window_ar": "Raw VAR",
     "euclidean_gaussian_ar": "Euclidean AR",
     "cholesky_gaussian_ar": "Cholesky AR",
-    "log_euclidean_gaussian_ar": "Log-Euclidean AR",
+    "log_euclidean_gaussian_ar": "log-Euclidean AR",
     "fixed_bwar": "Fixed BWAR",
     "local_bwar": "Local BWAR",
 }
@@ -199,7 +199,7 @@ def build_pems_table(results: Path, output: Path) -> None:
         "Persistence": "Persistence",
         "Euclidean": "Euclidean AR",
         "Cholesky": "Cholesky AR",
-        "Log-Euclidean": "Log-Euclidean AR",
+        "Log-Euclidean": "log-Euclidean AR",
         "BWAR": "Fixed BWAR",
     }
     horizons = (1, 3, 6)
